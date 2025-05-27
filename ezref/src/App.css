@@ -23,7 +23,11 @@
 .split-div {
   display: flex;
   flex-direction: row;
+}
 
+.split-div > div:hover {
+  background-color: black;
+  cursor: pointer;
 }
 
 .large-card {
@@ -31,6 +35,15 @@
   border-radius: 3rem;
   background-color: #9DB5B2;
   color: #3B413C;
+  box-shadow: 0 4px 8px 0 grey, 0 6px 20px 0 grey;
+}
+
+.selected-role {
+  background-color: #BCCDCB;
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0;
+  transition: background-color 0.3s ease;
 }
 
 h2{
@@ -38,7 +51,7 @@ h2{
 }
 
 h3, p {
-  color: 3B413C;
+  color: #3B413C;
 }
 
 
