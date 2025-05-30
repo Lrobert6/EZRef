@@ -28,6 +28,13 @@
 .split-div > div:hover {
   background-color: black;
   cursor: pointer;
+  transition: all 0.3s ease;
+  transform: scale(1.025);
+}
+
+.log-in:hover {
+  transition: all 0.3s ease;
+  transform: scale(1.025);
 }
 
 .large-card {
@@ -38,12 +45,68 @@
   box-shadow: 0 4px 8px 0 grey, 0 6px 20px 0 grey;
 }
 
+.large-card:hover {
+  transition: all 0.3s ease;
+  transform: scale(1.025);
+}
+
 .selected-role {
   background-color: #BCCDCB;
   border-radius: 1rem;
   padding: 1rem;
   box-shadow: 0;
   transition: background-color 0.3s ease;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  min-width: 100vw;
+  height: 5vh;
+  background-color: #3B413C;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.navbar-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 97.5vw;
+  margin-left: 1.25vw;
+}
+
+.navbar-container > * {
+  cursor: pointer;
+}
+
+.button {
+  background-color: #3B413C;
+  color: white;
+  padding: 1.5vw;
+  width: auto;
+  border-radius: 1rem;
+  text-align: center;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 3rem;
+  box-shadow: 0 4px 8px 0 grey, 0 6px 20px 0 grey;
+}
+
+.button:hover {
+  transition: all 0.3s ease;
+  transform: scale(1.025);
+}
+
+.button p {
+  font-size: 200%;
+  color: white;
+  margin: 0;
 }
 
 h2{
