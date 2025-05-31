@@ -12,7 +12,7 @@ const NavBar = () => {
             <div className='navbar-container'>
                 <h1 onClick={() => navigate('/')}>EZRef</h1>
 
-                <div onClick={() => navigate('/')} style={{display: 'flex', flexDirection: 'row'}} className='log-in'>
+                <div onClick={() => navigate('/login')} style={{display: 'flex', flexDirection: 'row'}} className='log-in'>
                     <h1>Log In</h1>
                     <CiLogin size={'2vw'}/>
                 </div>

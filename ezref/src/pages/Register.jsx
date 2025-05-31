@@ -1,8 +1,10 @@
 import React, {useState} from "react";
 import supabase from "../SupabaseClient";
 import '../App.css';
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+    const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
@@ -22,7 +24,7 @@ const Register = () => {
         }
 
         if (data){
-            setMessage("Account Created");
+            navigate('/login');
         }
 
         setEmail("");
