@@ -1,0 +1,61 @@
+/*
+  Palette
+  White - #FFFFFF
+  Black Olive - #3B413C
+  Ash Gray - #9DB5B2
+  Light Cyan - #DAF0EE
+*/
+
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+  }
+
+  .main {
+    background-color: #9DB5B2;
+    color: #3B413C;
+    min-height: 100vh;
+  }
+
+  .registration-container {
+    background-color: #DAF0EE;
+    border-radius: 2rem;
+    width: 30%;
+    height: 50vh;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    box-shadow: 0 4px 8px 0 grey, 0 6px 20px 0 grey;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  form input {
+    font-size: 1.5rem;
+    padding-left: .5rem;
+    border-radius: 1rem;
+  }
+
+  h1{
+    
+    padding-left: 10px;
+    padding-top: 10px;
+  }
+
+  h1:hover {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    transform: scale(1.025);
+  }
+
+  h2{
+    font-size: 3rem;
+    color: #3B413C;
+  }
