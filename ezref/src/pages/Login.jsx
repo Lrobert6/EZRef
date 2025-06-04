@@ -3,6 +3,7 @@ import supabase from "../SupabaseClient";
 import '../assets/css/login.css';
 import { useNavigate } from "react-router-dom";
 import Button from '../components/Button';
+import AuthCard from "../components/AuthCard";
 
 const Login = () => {
     const navigate = useNavigate();
@@ -33,9 +34,8 @@ const Login = () => {
         <div className='main'>
             <h1 style={{position: 'absolute'}} onClick={() => navigate('/')}>EZRef</h1>
             <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', minHeight: '100vh'}}>
-            <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
-                <div className='login-container'>
-                    <form onSubmit={handleSubmit} style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                <form onSubmit={handleSubmit}>
+                    <AuthCard>
                         <h2>Login</h2>
                         <input onChange={(e) => setEmail(e.target.value)} value={email} type='email' placeholder='Email Address' required />
                         <input onChange={(e) => setPassword(e.target.value)} value={password} type='password' placeholder='Password' required />
@@ -44,14 +44,9 @@ const Login = () => {
                             <p style={{marginBottom: '.5rem'}}>Don't have an account?</p>
                             <Button style={{fontSize: '1rem', padding: '.5rem'}} text={"Sign up"} onClick={() => navigate("/register")}/>
                         </div>
-                        
-                    </form>
-                </div>
+                    </AuthCard>
+                </form>
             </div>
-            </div>
-            
-            
-            
             {message && <p>{message}</p>}
         </div>
     )

@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import Wrapper from './pages/Wrapper';
 import Home from './pages/Home';
 import Register from './pages/Register';
+import EmployerRegister from './pages/EmployerRegister';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/register" element={<Register/>} />
+        <Route path="/employerRegister" element={<EmployerRegister/>}/>
         <Route path="/login" element={<Login/>} />
         <Route path="/dashboard" element={<Wrapper><Dashboard/></Wrapper>}/>
       </Routes>
