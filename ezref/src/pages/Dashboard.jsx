@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
 import '../App.css';
 import supabase from "../SupabaseClient";
+import UserNavBar from '../components/UserNavBar.jsx';
 
 const Dashboard = () => {
     const navigate = useNavigate();
@@ -14,7 +15,7 @@ const Dashboard = () => {
 
     return (
         <div>
-            <h1>Dashboard</h1>
+            <UserNavBar/>
             <button onClick={signOut}>Sign Out</button>
         </div>
     )

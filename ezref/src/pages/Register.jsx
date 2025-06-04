@@ -45,7 +45,7 @@ const Register = () => {
                         <Button style={{width: '100%', fontSize: '2rem', padding: '1rem'}} text={"Register"} type='submit'/>
                         <div>
                             <p style={{marginBottom: '.5rem'}}>Are you an employer?</p>
-                            <Button style={{fontSize: '1rem', padding: '.5rem'}} text={"Employer Registration"}/>
+                            <Button style={{fontSize: '1rem', padding: '.5rem'}} text={"Employer Registration"} onClick={() => navigate("/employerRegister")}/>
                         </div>
                         <div>
                             <p style={{marginBottom: '.5rem'}}>Already have an account?</p>

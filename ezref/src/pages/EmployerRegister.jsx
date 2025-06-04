@@ -41,7 +41,7 @@ const EmployerRegister = () => {
         <div className='main'>
             <h1 style={{position: 'absolute'}} onClick={() => navigate('/')}>EZRef</h1>
             <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', minHeight: '100vh'}}>
-                <form >
+                <form autoComplete="off">
                     <AuthCard>
                         <h2>Employer Registration</h2>
                         {stage === 1 && (<>
@@ -51,8 +51,9 @@ const EmployerRegister = () => {
                             <Button style={{width: '100%', fontSize: '2rem', padding: '1rem'}} text={"Next"} onClick={() => setStage(2)}/>
                         </>)}
                         {stage === 2 && (<>
-                            <input onChange={(e) => setEmail(e.target.value)} value={email} type='email' placeholder='Company Email Address' required />
-                            <input onChange={(e) => setPassword(e.target.value)} value={password} type='password' placeholder='Password' required />
+                            <input onChange={(e) => setEmail(e.target.value)} value={email} type='email' placeholder='Company Email Address' required autoComplete="new-email" />
+                            <input onChange={(e) => setPassword(e.target.value)} value={password} type='password' placeholder='Password' required autoComplete="new-password" />
+                            <Button style={{width: '20%', fontSize: '1rem', padding: '1rem'}} text={"Back"} onClick={() => setStage(1)}/>
                             <Button style={{width: '100%', fontSize: '2rem', padding: '1rem'}} text={"Register"} type='submit'/>
                         </>)}
                     </AuthCard>
