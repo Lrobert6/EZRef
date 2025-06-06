@@ -1,0 +1,14 @@
+/*
+  Palette
+  White - #FFFFFF
+  Black Olive - #3B413C
+  Ash Gray - #9DB5B2
+  Light Cyan - #DAF0EE
+*/
+
+.card {
+    background-color: #9DB5B2;
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px;
+}

@@ -37,8 +37,7 @@ const Register = () => {
         <div className='main'>
             <h1 style={{position: 'absolute'}} onClick={() => navigate('/')}>EZRef</h1>
             <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', minHeight: '100vh'}}>
-                <form onSubmit={handleSubmit}>
-                    <AuthCard>
+                    <AuthCard onSubmit={handleSubmit}>
                         <h2>Register</h2>
                         <input onChange={(e) => setEmail(e.target.value)} value={email} type='email' placeholder='Email Address' required />
                         <input onChange={(e) => setPassword(e.target.value)} value={password} type='password' placeholder='Password' required />
@@ -52,7 +51,6 @@ const Register = () => {
                             <Button style={{fontSize: '1rem', padding: '.5rem'}} text={"Login"} onClick={() => navigate("/login")}/>
                         </div>
                     </AuthCard>
-                </form>
             </div>
             {message && <p>{message}</p>}
         </div>

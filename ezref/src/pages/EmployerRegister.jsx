@@ -41,7 +41,6 @@ const EmployerRegister = () => {
         <div className='main'>
             <h1 style={{position: 'absolute'}} onClick={() => navigate('/')}>EZRef</h1>
             <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', minHeight: '100vh'}}>
-                <form autoComplete="off">
                     <AuthCard>
                         <h2>Employer Registration</h2>
                         {stage === 1 && (<>
@@ -57,7 +56,6 @@ const EmployerRegister = () => {
                             <Button style={{width: '100%', fontSize: '2rem', padding: '1rem'}} text={"Register"} type='submit'/>
                         </>)}
                     </AuthCard>
-                </form>
             </div>
             {message && <p>{message}</p>}
         </div>

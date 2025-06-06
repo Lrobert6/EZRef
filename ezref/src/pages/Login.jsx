@@ -15,6 +15,8 @@ const Login = () => {
         event.preventDefault();
         setMessage("");
 
+        console.log("Logging in...");
+
         const {data, error} = await supabase.auth.signInWithPassword({
             email: email,
             password: password
@@ -26,6 +28,7 @@ const Login = () => {
         }
 
         if (data){
+            console.log("Login successful");
             navigate('/dashboard');
         }
     }
@@ -34,18 +37,16 @@ const Login = () => {
         <div className='main'>
             <h1 style={{position: 'absolute'}} onClick={() => navigate('/')}>EZRef</h1>
             <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', minHeight: '100vh'}}>
-                <form onSubmit={handleSubmit}>
-                    <AuthCard>
-                        <h2>Login</h2>
-                        <input onChange={(e) => setEmail(e.target.value)} value={email} type='email' placeholder='Email Address' required />
-                        <input onChange={(e) => setPassword(e.target.value)} value={password} type='password' placeholder='Password' required />
-                        <Button style={{width: '100%', fontSize: '2rem', padding: '1rem'}} text={"Login"} type='submit'/>
-                        <div>
-                            <p style={{marginBottom: '.5rem'}}>Don't have an account?</p>
-                            <Button style={{fontSize: '1rem', padding: '.5rem'}} text={"Sign up"} onClick={() => navigate("/register")}/>
-                        </div>
-                    </AuthCard>
-                </form>
+                <AuthCard onSubmit={handleSubmit}>
+                    <h2>Login</h2>
+                    <input onChange={(e) => setEmail(e.target.value)} value={email} type='email' placeholder='Email Address' required />
+                    <input onChange={(e) => setPassword(e.target.value)} value={password} type='password' placeholder='Password' required />
+                    <Button style={{width: '100%', fontSize: '2rem', padding: '1rem'}} text={"Login"} type='submit'/>
+                    <div>
+                        <p style={{marginBottom: '.5rem'}}>Don't have an account?</p>
+                        <Button style={{fontSize: '1rem', padding: '.5rem'}} text={"Sign up"} onClick={() => navigate("/register")}/>
+                    </div>
+                </AuthCard>
             </div>
             {message && <p>{message}</p>}
         </div>
