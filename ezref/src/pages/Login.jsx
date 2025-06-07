@@ -42,7 +42,7 @@ const Login = () => {
                     <input onChange={(e) => setEmail(e.target.value)} value={email} type='email' placeholder='Email Address' required />
                     <input onChange={(e) => setPassword(e.target.value)} value={password} type='password' placeholder='Password' required />
                     <Button style={{width: '100%', fontSize: '2rem', padding: '1rem'}} text={"Login"} type='submit'/>
-                    <div>
+                    <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                         <p style={{marginBottom: '.5rem'}}>Don't have an account?</p>
                         <Button style={{fontSize: '1rem', padding: '.5rem'}} text={"Sign up"} onClick={() => navigate("/register")}/>
                     </div>

@@ -1,4 +1,4 @@
 nav>div>h1:hover, nav>div>h2:hover, .icon:hover {
     transition: all 0.3s ease;
-    transform: scale(1.025);
+    transform: scale(1.05);
 }

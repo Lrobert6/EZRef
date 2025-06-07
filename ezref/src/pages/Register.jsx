@@ -46,7 +46,7 @@ const Register = () => {
                             <p style={{marginBottom: '.5rem'}}>Are you an employer?</p>
                             <Button style={{fontSize: '1rem', padding: '.5rem'}} text={"Employer Registration"} onClick={() => navigate("/employerRegister")}/>
                         </div>
-                        <div>
+                        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                             <p style={{marginBottom: '.5rem'}}>Already have an account?</p>
                             <Button style={{fontSize: '1rem', padding: '.5rem'}} text={"Login"} onClick={() => navigate("/login")}/>
                         </div>

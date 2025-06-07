@@ -1,0 +1,30 @@
+/*
+  Palette
+  White - #FFFFFF
+  Black Olive - #3B413C
+  Ash Gray - #9DB5B2
+  Light Cyan - #DAF0EE
+*/
+
+p {
+    text-align: center;
+}
+
+.add-div {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 3rem 5rem;
+    background-color: #9DB5B2;
+    border-radius: 10px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 8px 0 grey, 0 6px 20px 0 grey;
+}
+
+.icon:hover {
+    transition: all 0.3s ease;
+    transform: scale(1.025);
+    cursor: pointer;
+}

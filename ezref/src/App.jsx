@@ -7,6 +7,8 @@ import Register from './pages/Register';
 import EmployerRegister from './pages/EmployerRegister';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
+import MyReferences from './pages/MyReferences';
+import Account from './pages/Account';
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
         <Route path="/employerRegister" element={<EmployerRegister/>}/>
         <Route path="/login" element={<Login/>} />
         <Route path="/dashboard" element={<Dashboard/>}/>
+        <Route path="/myReferences" element={<MyReferences/>}/>
+        <Route path="/account" element={<Account/>}/>
         {/* <Route path="/dashboard" element={<Wrapper><Dashboard/></Wrapper>}/> */}
       </Routes>
     </BrowserRouter>
