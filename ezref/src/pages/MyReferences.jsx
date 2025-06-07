@@ -18,11 +18,11 @@ const MyReferences = () => {
     return(
         <div>
             <UserNavBar onClick={signOut}/>
-            <div style={{display: 'flex', flexDirection: 'row', gap: '5rem', padding: '3rem 5rem'}}>
-                <Card title={'References'} style={{height: '70vh'}}>
+            <div style={{flex: '1', display: 'flex', flexDirection: 'row', gap: '5rem', padding: '3rem 5rem'}}>
+                <Card title={'References'} style={{minHeight: '81vh', position: 'relative'}}>
                     <p>Your references will appear here.</p>
-                    <div className='add-div' style={{}}>  
-                        <IoIosAddCircleOutline className='icon' color={'white'} size={'7.5rem'}/>
+                    <div className='add-div'>  
+                        <IoIosAddCircleOutline className='icon' color={'#3B413C'} size={'7.5rem'} onClick={() => navigate('/addReference')}/>
                     </div>
                 </Card>
             </div>

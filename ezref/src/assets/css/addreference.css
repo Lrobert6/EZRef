@@ -6,14 +6,10 @@
   Light Cyan - #DAF0EE
 */
 
-.card {
+.back-div {
     background-color: #9DB5B2;
-    width: 100%;
-    border-radius: 10px;
-    padding: 10px;
+    padding-top: 5px;
+    height: min-content;
+    border-radius: 10px; 
     box-shadow: 0 4px 8px 0 grey, 0 6px 20px 0 grey;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
 }
-

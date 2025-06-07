@@ -17,7 +17,7 @@ const Dashboard = () => {
     return (
         <div>
             <UserNavBar onClick={signOut}/>
-            <div style={{display: 'flex', flexDirection: 'row', gap: '5rem', padding: '3rem 5rem'}}>
+            <div style={{flex: '1', display: 'flex', flexDirection: 'row', gap: '5rem', padding: '3rem 5rem'}}>
                 <Card title={'Notifications'}>
                     <p>Notifications here</p>
                 </Card>

@@ -9,6 +9,7 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import MyReferences from './pages/MyReferences';
 import Account from './pages/Account';
+import AddReference from './pages/AddReference';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/login" element={<Login/>} />
         <Route path="/dashboard" element={<Dashboard/>}/>
         <Route path="/myReferences" element={<MyReferences/>}/>
+        <Route path="/addReference" element={<AddReference/>}/>
         <Route path="/account" element={<Account/>}/>
         {/* <Route path="/dashboard" element={<Wrapper><Dashboard/></Wrapper>}/> */}
       </Routes>
