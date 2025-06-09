@@ -4,6 +4,8 @@ import '../App.css';
 import supabase from "../SupabaseClient";
 import UserNavBar from '../components/UserNavBar.jsx';
 import Card from '../components/Card.jsx';
+import { MdOutlineModeEditOutline } from "react-icons/md";
+
 
 const Dashboard = () => {
     const navigate = useNavigate();
@@ -21,8 +23,16 @@ const Dashboard = () => {
                 <Card title={'Notifications'}>
                     <p>Notifications here</p>
                 </Card>
-                <Card title={'Profile'}>
-                    <p>Profile stuff</p>
+                <Card title={'Profile'} style={{position: 'relative'}}>
+                    <MdOutlineModeEditOutline  style={{position: 'absolute', right: 0, top: 0, padding: '1rem'}} color={'#3B413C'} size={'2rem'}/>
+                    <table>
+                        <tr>
+                            <td>Public</td>
+                            <td>
+                                <input></input>
+                            </td>
+                        </tr>
+                    </table>
                 </Card>
             </div>
             
