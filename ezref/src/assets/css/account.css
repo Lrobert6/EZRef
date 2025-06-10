@@ -36,3 +36,8 @@ td input {
   margin-left: 1rem;
 }
 
+.readonly-input {
+  background-color: #9c9c9c;
+  pointer-events: none;
+}
+

@@ -1,0 +1,17 @@
+/*
+  Palette
+  White - #FFFFFF
+  Black Olive - #3B413C
+  Ash Gray - #9DB5B2
+  Light Cyan - #DAF0EE
+*/
+
+span {
+    font-weight: bolder;
+}
+
+span:hover {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    transform: scale(1.5);
+}

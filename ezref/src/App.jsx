@@ -10,6 +10,7 @@ import Dashboard from './pages/Dashboard';
 import MyReferences from './pages/MyReferences';
 import Account from './pages/Account';
 import AddReference from './pages/AddReference';
+import Reference from './pages/Reference';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/myReferences" element={<MyReferences/>}/>
         <Route path="/addReference" element={<AddReference/>}/>
         <Route path="/account" element={<Account/>}/>
+        <Route path="/reference" element={<Reference/>}/>
         {/* <Route path="/dashboard" element={<Wrapper><Dashboard/></Wrapper>}/> */}
       </Routes>
     </BrowserRouter>
