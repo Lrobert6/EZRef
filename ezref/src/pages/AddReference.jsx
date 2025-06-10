@@ -18,11 +18,11 @@ const AddReference = () => {
     return(
         <div>
             <UserNavBar onClick={signOut}/>
-            <div style={{flex: '1', display: 'flex', flexDirection: 'row', gap: '3rem', padding: '3rem 5rem 3rem 3rem'}}>
-                <div className='back-div'>  
+            <div style={{flex: '1', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '3rem', padding: '3rem 5rem 3rem 3rem'}}>
+                {/* <div className='back-div'>  
                     <FaArrowCircleLeft className='icon' color={'#3B413C'} size={'7.5rem'} onClick={() => navigate('/myReferences')}/>
-                </div>
-                <Card title={'Add Reference'} style={{minHeight: '81vh', position: 'relative'}}>
+                </div> */}
+                <Card title={'Add Reference'} style={{minHeight: '81vh', position: 'relative', width: '50%'}}>
                     <p>Add Reference Information</p>
                 </Card>
             </div>

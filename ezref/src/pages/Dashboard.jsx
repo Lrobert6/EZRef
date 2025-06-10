@@ -19,20 +19,12 @@ const Dashboard = () => {
     return (
         <div>
             <UserNavBar onClick={signOut}/>
-            <div style={{flex: '1', display: 'flex', flexDirection: 'row', gap: '5rem', padding: '3rem 5rem'}}>
-                <Card title={'Notifications'}>
-                    <p>Notifications here</p>
+            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '5rem', padding: '3rem 5rem'}}>
+                <Card style={{width: '50%'}}>
+                    <h2 style={{fontSize: '4rem', textAlign: 'center'}}>Hello, Lucas</h2>
                 </Card>
-                <Card title={'Profile'} style={{position: 'relative'}}>
-                    <MdOutlineModeEditOutline  style={{position: 'absolute', right: 0, top: 0, padding: '1rem'}} color={'#3B413C'} size={'2rem'}/>
-                    <table>
-                        <tr>
-                            <td>Public</td>
-                            <td>
-                                <input></input>
-                            </td>
-                        </tr>
-                    </table>
+                <Card title={'Notifications'} style={{width: '50%'}}>
+                    <p>Notifications here</p>
                 </Card>
             </div>
             
