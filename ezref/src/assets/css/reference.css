@@ -6,6 +6,10 @@
   Light Cyan - #DAF0EE
 */
 
+h2 {
+  text-align: center;
+}
+
 span {
     font-weight: bolder;
 }
@@ -15,3 +19,9 @@ span:hover {
     transition: all 0.3s ease;
     transform: scale(1.5);
 }
+
+input, select {
+    font-size: 1.5rem;
+    padding-left: .5rem;
+    border-radius: 1rem;
+  }
