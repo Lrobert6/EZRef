@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import Card from "../components/Card";
 import Button from "../components/Button";
+import SmallCard from "../components/SmallCard";
 import { useNavigate } from "react-router-dom";
 import '../assets/css/reference.css';
 
@@ -32,16 +33,24 @@ const Reference = () => {
                 {step === 1 && (
                     <>
                         <Card title={'Enter your Name'} style={{width: '50%', height: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-                                <input type='text' value={firstName} onChange={(e) => setFirstName(e.target.value)} placeholder='First Name' required style={{marginTop: '3rem', marginBottom: '2rem'}}/>
-                                <input type='text' value={lastName} onChange={(e) => setLastName(e.target.value)} placeholder='Last Name' required style={{marginBottom: '3rem'}}/>
+                            <input type='text' value={firstName} onChange={(e) => setFirstName(e.target.value)} placeholder='First Name' required style={{marginTop: '3rem', marginBottom: '2rem'}}/>
+                            <input type='text' value={lastName} onChange={(e) => setLastName(e.target.value)} placeholder='Last Name' required style={{marginBottom: '3rem'}}/>
                         </Card>
                         <Button text='Continue' onClick={() => setStep(2)}/>
                     </>
                 )}
                 {step === 2 && (
                     <>
-                        <Card title={`How do you know ${forName}`} style={{width: '50%', height: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-                                
+                        <Card title={`How do you know ${forName}?`} style={{width: '50%', height: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                            <div>
+                                <SmallCard>
+                                    <p>I am their former supervisor.</p>
+                                </SmallCard>
+                                <SmallCard>
+                                    <p>I am their current supervisor.</p>
+                                </SmallCard>
+                            </div>
+                            
                         </Card>
                         <Button text='Continue'/>
                     </>

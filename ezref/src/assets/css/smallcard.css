@@ -1,0 +1,25 @@
+/*
+  Palette
+  White - #FFFFFF
+  Black Olive - #3B413C
+  Ash Gray - #9DB5B2
+  Light Cyan - #DAF0EE
+*/
+
+.small-card {
+    background-color: #3B413C;
+    color: white;
+    border-radius: 10px;
+    padding: 2rem;
+}
+
+.small-card:hover {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    transform: scale(1.025);
+}
+
+.small-card>* {
+    color: white;
+    font-size: 1.25rem;
+}
