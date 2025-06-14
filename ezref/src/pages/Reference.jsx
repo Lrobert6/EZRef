@@ -12,6 +12,7 @@ const Reference = () => {
 
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
+    const [knowsHow, setKnowsHow] = useState('');
     let navigate = useNavigate();
 
 
@@ -42,14 +43,80 @@ const Reference = () => {
                 {step === 2 && (
                     <>
                         <Card title={`How do you know ${forName}?`} style={{width: '50%', height: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-                            <div>
-                                <SmallCard>
-                                    <p>I am their former supervisor.</p>
-                                </SmallCard>
-                                <SmallCard>
-                                    <p>I am their current supervisor.</p>
-                                </SmallCard>
+                            <div style={{display: 'flex', flexDirection: 'row'}}>
+                                <div>
+                                    <SmallCard onClick={() => {setKnowsHow('formerSupervisor')
+                                        setStep(3)
+                                    }}>
+                                        <p>I am their former supervisor.</p>
+                                    </SmallCard>
+                                    <SmallCard onClick={() => {setKnowsHow('currentSupervisor')
+                                        setStep(3)
+                                    }}>
+                                        <p>I am their current supervisor.</p>
+                                    </SmallCard>
+                                    <SmallCard onClick={() => {setKnowsHow('formerCommunityLeader')
+                                        setStep(3)
+                                    }}>
+                                        <p>I am their former community leader.</p>
+                                    </SmallCard>
+                                    <SmallCard onClick={() => {setKnowsHow('currentCommunityLeader')
+                                        setStep(3)
+                                    }}>
+                                        <p>I am their current community leader.</p>
+                                    </SmallCard>
+                                    <SmallCard onClick={() => {setKnowsHow('formerReligiousLeader')
+                                        setStep(3)
+                                    }}>
+                                        <p>I am their former religious leader.</p>
+                                    </SmallCard>
+                                    <SmallCard onClick={() => {setKnowsHow('currentReligiousLeader')
+                                        setStep(3)
+                                    }}>
+                                        <p>I am their current religious leader.</p>
+                                    </SmallCard>
+                                </div>
+                                <div>
+                                    <SmallCard onClick={() => {setKnowsHow('formerTeacher')
+                                        setStep(3)
+                                    }}>
+                                        <p>I am their former teacher.</p>
+                                    </SmallCard>
+                                    <SmallCard onClick={() => {setKnowsHow('currentTeacher')
+                                        setStep(3)
+                                    }}>
+                                        <p>I am their current teacher.</p>
+                                    </SmallCard>
+                                    <SmallCard onClick={() => {setKnowsHow('formerMentor')
+                                        setStep(3)
+                                    }}>
+                                        <p>I am their former mentor.</p>
+                                    </SmallCard>
+                                    <SmallCard onClick={() => {setKnowsHow('currentMentor')
+                                        setStep(3)
+                                    }}>
+                                        <p>I am their current mentor.</p>
+                                    </SmallCard>
+                                    <SmallCard onClick={() => {setKnowsHow('formerAdvisor')
+                                        setStep(3)
+                                    }}>
+                                        <p>I am their former advisor.</p>
+                                    </SmallCard>
+                                    <SmallCard onClick={() => {setKnowsHow('currentAdvisor')
+                                        setStep(3)
+                                    }}>
+                                        <p>I am their current advisor.</p>
+                                    </SmallCard>
+                                </div>
+                                
                             </div>
+                            
+                        </Card>
+                    </>
+                )}
+                {step === 3 && (
+                    <>
+                        <Card title={`How long have you been a ${knowsHow.substring(7)} for ${firstName}?`} style={{width: '50%', height: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                             
                         </Card>
                         <Button text='Continue'/>
