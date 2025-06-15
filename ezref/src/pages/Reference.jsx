@@ -9,10 +9,12 @@ const Reference = () => {
     const [loading, setLoading] = useState(false);
     const [forName, setForName] = useState("Name");
     const [step, setStep] = useState(1);
-
+    
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [knowsHow, setKnowsHow] = useState('');
+    const [isCurrent, setIsCurrent] = useState(true);
+    const [timeKnown, setTimeKnown] = useState('');
     let navigate = useNavigate();
 
 
@@ -45,66 +47,42 @@ const Reference = () => {
                         <Card title={`How do you know ${forName}?`} style={{width: '50%', height: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                             <div style={{display: 'flex', flexDirection: 'row'}}>
                                 <div>
-                                    <SmallCard onClick={() => {setKnowsHow('formerSupervisor')
-                                        setStep(3)
-                                    }}>
+                                    <SmallCard onClick={() => {setKnowsHow('supervisor');setIsCurrent(false);setStep(3)}}>
                                         <p>I am their former supervisor.</p>
                                     </SmallCard>
-                                    <SmallCard onClick={() => {setKnowsHow('currentSupervisor')
-                                        setStep(3)
-                                    }}>
+                                    <SmallCard onClick={() => {setKnowsHow('supervisor');setIsCurrent(true);setStep(3)}}>
                                         <p>I am their current supervisor.</p>
                                     </SmallCard>
-                                    <SmallCard onClick={() => {setKnowsHow('formerCommunityLeader')
-                                        setStep(3)
-                                    }}>
+                                    <SmallCard onClick={() => {setKnowsHow('community leader');setIsCurrent(false);setStep(3)}}>
                                         <p>I am their former community leader.</p>
                                     </SmallCard>
-                                    <SmallCard onClick={() => {setKnowsHow('currentCommunityLeader')
-                                        setStep(3)
-                                    }}>
+                                    <SmallCard onClick={() => {setKnowsHow('community leader');setIsCurrent(true);setStep(3)}}>
                                         <p>I am their current community leader.</p>
                                     </SmallCard>
-                                    <SmallCard onClick={() => {setKnowsHow('formerReligiousLeader')
-                                        setStep(3)
-                                    }}>
+                                    <SmallCard onClick={() => {setKnowsHow('religious leader');setIsCurrent(false);setStep(3)}}>
                                         <p>I am their former religious leader.</p>
                                     </SmallCard>
-                                    <SmallCard onClick={() => {setKnowsHow('currentReligiousLeader')
-                                        setStep(3)
-                                    }}>
+                                    <SmallCard onClick={() => {setKnowsHow('religious leader');setIsCurrent(true);setStep(3)}}>
                                         <p>I am their current religious leader.</p>
                                     </SmallCard>
                                 </div>
                                 <div>
-                                    <SmallCard onClick={() => {setKnowsHow('formerTeacher')
-                                        setStep(3)
-                                    }}>
+                                    <SmallCard onClick={() => {setKnowsHow('teacher');setIsCurrent(false);setStep(3)}}>
                                         <p>I am their former teacher.</p>
                                     </SmallCard>
-                                    <SmallCard onClick={() => {setKnowsHow('currentTeacher')
-                                        setStep(3)
-                                    }}>
+                                    <SmallCard onClick={() => {setKnowsHow('teacher');setIsCurrent(true);setStep(3)}}>
                                         <p>I am their current teacher.</p>
                                     </SmallCard>
-                                    <SmallCard onClick={() => {setKnowsHow('formerMentor')
-                                        setStep(3)
-                                    }}>
+                                    <SmallCard onClick={() => {setKnowsHow('mentor');setIsCurrent(false);setStep(3)}}>
                                         <p>I am their former mentor.</p>
                                     </SmallCard>
-                                    <SmallCard onClick={() => {setKnowsHow('currentMentor')
-                                        setStep(3)
-                                    }}>
+                                    <SmallCard onClick={() => {setKnowsHow('mentor');setIsCurrent(true);setStep(3)}}>
                                         <p>I am their current mentor.</p>
                                     </SmallCard>
-                                    <SmallCard onClick={() => {setKnowsHow('formerAdvisor')
-                                        setStep(3)
-                                    }}>
+                                    <SmallCard onClick={() => {setKnowsHow('advisor');setIsCurrent(false);setStep(3)}}>
                                         <p>I am their former advisor.</p>
                                     </SmallCard>
-                                    <SmallCard onClick={() => {setKnowsHow('currentAdvisor')
-                                        setStep(3)
-                                    }}>
+                                    <SmallCard onClick={() => {setKnowsHow('advisor');setIsCurrent(true);setStep(3)}}>
                                         <p>I am their current advisor.</p>
                                     </SmallCard>
                                 </div>
@@ -116,9 +94,26 @@ const Reference = () => {
                 )}
                 {step === 3 && (
                     <>
-                        <Card title={`How long have you been a ${knowsHow.substring(7)} for ${firstName}?`} style={{width: '50%', height: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-                            
-                        </Card>
+                        {isCurrent===false ? (
+                            <Card title={`How long have you been ${knowsHow=='advisor' ? 'an' : 'a'} ${knowsHow} for ${firstName}?`} style={{width: '50%', height: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                                <select placeholder='Select an option' style={{margin: '1rem 0'}}>
+                                    <option disabled hidden>Select an option</option>
+                                    <option>0-6 months</option>
+                                    <option>6-12 months</option>
+                                    <option>1-3 years</option>
+                                    <option>3-5 years</option>
+                                    <option>5+ years</option>
+                                </select>
+                            </Card>
+                        ) : 
+                        (
+                            <Card title={`When were you ${knowsHow=='advisor' ? 'an' : 'a'} ${knowsHow} for ${firstName}?`} style={{width: '50%', height: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                                <input type='date' style={{margin: '3rem 0 1rem', padding: '.5rem'}}/>
+                                <p>to</p>
+                                <input type='date' style={{margin: '1rem 0 3rem', padding: '.5rem'}}/>
+                            </Card>
+                        )}
+                        
                         <Button text='Continue'/>
                     </>
                 )}
