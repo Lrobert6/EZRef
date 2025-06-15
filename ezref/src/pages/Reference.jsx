@@ -15,6 +15,13 @@ const Reference = () => {
     const [knowsHow, setKnowsHow] = useState('');
     const [isCurrent, setIsCurrent] = useState(true);
     const [timeKnown, setTimeKnown] = useState('');
+    const [knownFrom, setKnownFrom] = useState('');
+    const [knownTo, setKnownTo] = useState('');
+    const [companyName, setCompanyName] = useState('');
+    const [companyCity, setCompanyCity] = useState('');
+    const [companyState, setCompanyState] = useState('');
+    const [companyPhone, setCompanyPhone] = useState();
+
     let navigate = useNavigate();
 
 
@@ -95,7 +102,7 @@ const Reference = () => {
                 {step === 3 && (
                     <>
                         {isCurrent===false ? (
-                            <Card title={`How long have you been ${knowsHow=='advisor' ? 'an' : 'a'} ${knowsHow} for ${firstName}?`} style={{width: '50%', height: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                            <Card title={`How long have you been ${knowsHow==='advisor' ? 'an' : 'a'} ${knowsHow} for ${forName}?`} style={{width: '50%', height: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                                 <select placeholder='Select an option' style={{margin: '1rem 0'}}>
                                     <option disabled hidden>Select an option</option>
                                     <option>0-6 months</option>
@@ -107,14 +114,28 @@ const Reference = () => {
                             </Card>
                         ) : 
                         (
-                            <Card title={`When were you ${knowsHow=='advisor' ? 'an' : 'a'} ${knowsHow} for ${firstName}?`} style={{width: '50%', height: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-                                <input type='date' style={{margin: '3rem 0 1rem', padding: '.5rem'}}/>
+                            <Card title={`When were you ${knowsHow==='advisor' ? 'an' : 'a'} ${knowsHow} for ${firstName}?`} style={{width: '50%', height: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                                <input type='date' value={knownFrom} onChange={(e) => setKnownFrom(e.target.value)} style={{margin: '3rem 0 1rem', padding: '.5rem'}}/>
                                 <p>to</p>
-                                <input type='date' style={{margin: '1rem 0 3rem', padding: '.5rem'}}/>
+                                <input type='date' value={knownTo} onChange={(e) => setKnownTo(e.target.value)} style={{margin: '1rem 0 3rem', padding: '.5rem'}}/>
                             </Card>
                         )}
                         
-                        <Button text='Continue'/>
+                        <Button text='Continue' onClick={() => setStep(4)}/>
+                    </>
+                )}
+                {step===4 && (
+                    <>
+                        {knowsHow==='supervisor' && (
+                            <Card title={`Where did you work with ${forName}?`} style={{width: '50%', height: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                                <input type='text' value={companyName} onChange={(e) => setCompanyName(e.target.value)} placeholder='Company Name' required style={{marginTop: '3rem', marginBottom: '2rem'}}/>
+                                <input type='text' value={companyCity} onChange={(e) => setCompanyCity(e.target.value)} placeholder='City' required style={{marginTop: '3rem', marginBottom: '2rem'}}/>
+                                <input type='text' value={companyState} onChange={(e) => setCompanyState(e.target.value)} placeholder='State/Province' required style={{marginTop: '3rem', marginBottom: '2rem'}}/>
+                                <input type='tel' value={companyPhone} onChange={(e) => setCompanyPhone(e.target.value)} placeholder='Company Phone' style={{marginTop: '3rem', marginBottom: '2rem'}}/>
+                            </Card>
+                        )}
+                        
+                        <Button text='Continue' onClick={() => setStep(5)}/>
                     </>
                 )}
             </div>
