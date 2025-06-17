@@ -22,6 +22,13 @@ const Reference = () => {
     const [companyState, setCompanyState] = useState('');
     const [companyPhone, setCompanyPhone] = useState();
 
+    const [q1, setQ1] = useState('Describe a time where this person had a disagreement with a coworker.');
+    const [q1Answer, setQ1Answer] = useState('');
+    const [q2, setQ2] = useState('');
+    const [q2Answer, setQ2Answer] = useState('');
+    const [q3, setQ3] = useState('');
+    const [q3Answer, setQ3Answer] = useState('');
+
     let navigate = useNavigate();
 
 
@@ -121,21 +128,45 @@ const Reference = () => {
                             </Card>
                         )}
                         
-                        <Button text='Continue' onClick={() => setStep(4)}/>
+                        <Button text='Continue' onClick={() => setStep(knowsHow === 'supervisor' ? 4 : 5)}/>
                     </>
                 )}
                 {step===4 && (
                     <>
                         {knowsHow==='supervisor' && (
                             <Card title={`Where did you work with ${forName}?`} style={{width: '50%', height: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-                                <input type='text' value={companyName} onChange={(e) => setCompanyName(e.target.value)} placeholder='Company Name' required style={{marginTop: '3rem', marginBottom: '2rem'}}/>
-                                <input type='text' value={companyCity} onChange={(e) => setCompanyCity(e.target.value)} placeholder='City' required style={{marginTop: '3rem', marginBottom: '2rem'}}/>
-                                <input type='text' value={companyState} onChange={(e) => setCompanyState(e.target.value)} placeholder='State/Province' required style={{marginTop: '3rem', marginBottom: '2rem'}}/>
-                                <input type='tel' value={companyPhone} onChange={(e) => setCompanyPhone(e.target.value)} placeholder='Company Phone' style={{marginTop: '3rem', marginBottom: '2rem'}}/>
+                                <input type='text' value={companyName} onChange={(e) => setCompanyName(e.target.value)} placeholder='Company Name' required style={{marginTop: '2rem', marginBottom: '2rem'}}/>
+                                <input type='text' value={companyCity} onChange={(e) => setCompanyCity(e.target.value)} placeholder='City' required style={{marginTop: '2rem', marginBottom: '2rem'}}/>
+                                <input type='text' value={companyState} onChange={(e) => setCompanyState(e.target.value)} placeholder='State/Province' required style={{marginTop: '2rem', marginBottom: '2rem'}}/>
+                                <input type='tel' value={companyPhone} onChange={(e) => setCompanyPhone(e.target.value)} placeholder='Company Phone' style={{marginTop: '2rem', marginBottom: '2rem'}}/>
                             </Card>
                         )}
                         
                         <Button text='Continue' onClick={() => setStep(5)}/>
+                    </>
+                )}
+                {step===5 && (
+                    <>
+                        <Card title={q1} style={{width: '50%', height: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                            <textarea value={q1Answer} onChange={(e) => setQ1Answer(e.target.value)} required placeholder="Please answer here" style={{width: '30rem', height: '15rem', resize: 'none', padding: '1rem', margin: '2rem 0'}}/>
+                        </Card>
+                        <Button text='Continue' onClick={() => setStep(6)}/>
+                    </>
+                )}
+                {step===6 && (
+                    <>
+                        <Card title={q2} style={{width: '50%', height: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                            <textarea value={q2Answer} onChange={(e) => setQ2Answer(e.target.value)} required placeholder="Please answer here" style={{width: '30rem', height: '15rem', resize: 'none', padding: '1rem', margin: '2rem 0'}}/>
+                        </Card>
+                        <Button text='Continue' onClick={() => setStep(7)}/>
+                    </>
+                )}
+                {step===7 && (
+                    <>
+                        <Card title={q3} style={{width: '50%', height: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                            <textarea value={q3Answer} onChange={(e) => setQ3Answer(e.target.value)} required placeholder="Please answer here" style={{width: '30rem', height: '15rem', resize: 'none', padding: '1rem', margin: '2rem 0'}}/>
+                        </Card>
+                        <Button text='Continue' onClick={() => setStep(8)}/>
                     </>
                 )}
             </div>
