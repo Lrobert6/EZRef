@@ -9,9 +9,12 @@ const Reference = () => {
     const [loading, setLoading] = useState(false);
     const [forName, setForName] = useState("Name");
     const [step, setStep] = useState(1);
+    const [message, setMessage] = useState('');
     
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [email2, setEmail2] = useState('');
     const [knowsHow, setKnowsHow] = useState('');
     const [isCurrent, setIsCurrent] = useState(true);
     const [timeKnown, setTimeKnown] = useState('');
@@ -49,11 +52,33 @@ const Reference = () => {
                 </Card>
                 {step === 1 && (
                     <>
-                        <Card title={'Enter your Name'} style={{width: '50%', height: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                        <Card title={'Enter your Information'} style={{width: '50%', height: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                             <input type='text' value={firstName} onChange={(e) => setFirstName(e.target.value)} placeholder='First Name' required style={{marginTop: '3rem', marginBottom: '2rem'}}/>
-                            <input type='text' value={lastName} onChange={(e) => setLastName(e.target.value)} placeholder='Last Name' required style={{marginBottom: '3rem'}}/>
+                            <input type='text' value={lastName} onChange={(e) => setLastName(e.target.value)} placeholder='Last Name' required style={{marginBottom: '2rem'}}/>
+                            <input type='email' value={email} onChange={(e) => setEmail(e.target.value)} placeholder='Email Address' required style={{marginBottom: '2rem'}}/>
+                            <input type='email' value={email2} onChange={(e) => setEmail2(e.target.value)} placeholder='Confirm Email Address' required style={{marginBottom: '3rem', border: email2 && email!==email2 ? '2px solid red' : ''}}/>
+                            {message && (
+                                <p>{message}</p>
+                            )}
                         </Card>
-                        <Button text='Continue' onClick={() => setStep(2)}/>
+                        <Button text='Continue' onClick={() => {
+                            if(!firstName.trim() || !lastName.trim()){
+                                setMessage("Please enter your first and last name");
+                                return;
+                            }
+                            if(!email.trim() || !email2.trim()){
+                                setMessage("Please enter your email address");
+                                return;
+                            }
+                            if(email !== email2){
+                                setMessage("Emails do not match");
+                                return;
+                            }
+                            setMessage('');
+                            setStep(2);
+                            
+
+                            }}/>
                     </>
                 )}
                 {step === 2 && (
@@ -128,7 +153,7 @@ const Reference = () => {
                             </Card>
                         )}
                         
-                        <Button text='Continue' onClick={() => setStep(knowsHow === 'supervisor' ? 4 : 5)}/>
+                        <Button text='Continue' onClick={() => {setStep(knowsHow === 'supervisor' ? 4 : 5)}}/>
                     </>
                 )}
                 {step===4 && (
@@ -139,34 +164,70 @@ const Reference = () => {
                                 <input type='text' value={companyCity} onChange={(e) => setCompanyCity(e.target.value)} placeholder='City' required style={{marginTop: '2rem', marginBottom: '2rem'}}/>
                                 <input type='text' value={companyState} onChange={(e) => setCompanyState(e.target.value)} placeholder='State/Province' required style={{marginTop: '2rem', marginBottom: '2rem'}}/>
                                 <input type='tel' value={companyPhone} onChange={(e) => setCompanyPhone(e.target.value)} placeholder='Company Phone' style={{marginTop: '2rem', marginBottom: '2rem'}}/>
+                                {message && (
+                                    <p>{message}</p>
+                                )}
                             </Card>
                         )}
                         
-                        <Button text='Continue' onClick={() => setStep(5)}/>
+                        <Button text='Continue' onClick={() => {
+                            if(!companyName.trim() || !companyCity.trim() || !companyState.trim() || !companyPhone.trim()){
+                                setMessage('Company details are required');
+                                return;
+                            }
+                            setStep(5)
+                            }}/>
                     </>
                 )}
                 {step===5 && (
                     <>
                         <Card title={q1} style={{width: '50%', height: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                             <textarea value={q1Answer} onChange={(e) => setQ1Answer(e.target.value)} required placeholder="Please answer here" style={{width: '30rem', height: '15rem', resize: 'none', padding: '1rem', margin: '2rem 0'}}/>
+                            {message && (
+                                <p>{message}</p>
+                            )}
                         </Card>
-                        <Button text='Continue' onClick={() => setStep(6)}/>
+                        <Button text='Continue' onClick={() => {
+                            if(!q1Answer.trim()){
+                                setMessage('Answer this question to continue');
+                                return;
+                            }
+                            setStep(6)
+                            }}/>
                     </>
                 )}
                 {step===6 && (
                     <>
                         <Card title={q2} style={{width: '50%', height: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                             <textarea value={q2Answer} onChange={(e) => setQ2Answer(e.target.value)} required placeholder="Please answer here" style={{width: '30rem', height: '15rem', resize: 'none', padding: '1rem', margin: '2rem 0'}}/>
+                            {message && (
+                                    <p>{message}</p>
+                                )}
                         </Card>
-                        <Button text='Continue' onClick={() => setStep(7)}/>
+                        <Button text='Continue' onClick={() => {
+                            if(!q2Answer.trim()){
+                                setMessage('Answer this question to continue');
+                                return;
+                            }
+                            setStep(7)
+                        }}/>
                     </>
                 )}
                 {step===7 && (
                     <>
                         <Card title={q3} style={{width: '50%', height: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                             <textarea value={q3Answer} onChange={(e) => setQ3Answer(e.target.value)} required placeholder="Please answer here" style={{width: '30rem', height: '15rem', resize: 'none', padding: '1rem', margin: '2rem 0'}}/>
+                            {message && (
+                                <p>{message}</p>
+                            )}
                         </Card>
-                        <Button text='Continue' onClick={() => setStep(8)}/>
+                        <Button text='Continue' onClick={() => {
+                            if(!q3Answer.trim()){
+                                setMessage('Answer this question to continue');
+                                return;
+                            }
+                            setStep(8)
+                            }}/>
                     </>
                 )}
             </div>
