@@ -46,10 +46,12 @@ const Reference = () => {
     return(
         <div style={{position: 'relative'}}>
             <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '5rem', padding: '3rem 5rem'}}>
-                <Card style={{width: '50%'}}>
-                    <p>Progress Bar Here</p>
-                    <h2 style={{fontSize: '2rem', textAlign: 'center'}}>You're submitting a reference for {forName}</h2>
-                </Card>
+                {step !== 8 &&(
+                    <Card style={{width: '50%'}}>
+                        <p>Progress Bar Here</p>
+                        <h2 style={{fontSize: '2rem', textAlign: 'center'}}>You're submitting a reference for {forName}</h2>
+                    </Card>
+                )}
                 {step === 1 && (
                     <>
                         <Card title={'Enter your Information'} style={{width: '50%', height: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
@@ -135,7 +137,7 @@ const Reference = () => {
                     <>
                         {isCurrent===false ? (
                             <Card title={`How long have you been ${knowsHow==='advisor' ? 'an' : 'a'} ${knowsHow} for ${forName}?`} style={{width: '50%', height: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-                                <select placeholder='Select an option' style={{margin: '1rem 0'}}>
+                                <select placeholder='Select an option' onChange={(e) => setTimeKnown(e.target.value)} style={{margin: '1rem 0'}}>
                                     <option disabled hidden>Select an option</option>
                                     <option>0-6 months</option>
                                     <option>6-12 months</option>
@@ -143,6 +145,9 @@ const Reference = () => {
                                     <option>3-5 years</option>
                                     <option>5+ years</option>
                                 </select>
+                                {message && (
+                                    <p>{message}</p>
+                                )}
                             </Card>
                         ) : 
                         (
@@ -150,10 +155,24 @@ const Reference = () => {
                                 <input type='date' value={knownFrom} onChange={(e) => setKnownFrom(e.target.value)} style={{margin: '3rem 0 1rem', padding: '.5rem'}}/>
                                 <p>to</p>
                                 <input type='date' value={knownTo} onChange={(e) => setKnownTo(e.target.value)} style={{margin: '1rem 0 3rem', padding: '.5rem'}}/>
+                                {message && (
+                                    <p>{message}</p>
+                                )}
                             </Card>
                         )}
                         
-                        <Button text='Continue' onClick={() => {setStep(knowsHow === 'supervisor' ? 4 : 5)}}/>
+                        <Button text='Continue' onClick={() => {
+                            if(!isCurrent && !timeKnown){
+                                setMessage('Please select an option');
+                                return;
+                            }
+                            if(isCurrent && (!knownFrom || !knownTo)){
+                                setMessage('Please select an option');
+                                return;
+                            }
+                            setMessage('');
+                            setStep(knowsHow === 'supervisor' ? 4 : 5)
+                            }}/>
                     </>
                 )}
                 {step===4 && (
@@ -175,6 +194,7 @@ const Reference = () => {
                                 setMessage('Company details are required');
                                 return;
                             }
+                            setMessage('');
                             setStep(5)
                             }}/>
                     </>
@@ -192,6 +212,7 @@ const Reference = () => {
                                 setMessage('Answer this question to continue');
                                 return;
                             }
+                            setMessage('');
                             setStep(6)
                             }}/>
                     </>
@@ -209,6 +230,7 @@ const Reference = () => {
                                 setMessage('Answer this question to continue');
                                 return;
                             }
+                            setMessage('');
                             setStep(7)
                         }}/>
                     </>
@@ -226,8 +248,24 @@ const Reference = () => {
                                 setMessage('Answer this question to continue');
                                 return;
                             }
+                            setMessage('');
                             setStep(8)
                             }}/>
+                    </>
+                )}
+                {step===8 && (
+                    <>
+                        <Card title={'Review your Reference'} style={{width: '50%', height: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center'}}/>
+                        <Card style={{width: '50%', height: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                            <h4>Name</h4>
+                            <p style={{marginLeft: '1rem'}}>{firstName} {lastName}</p>
+                            <h4>Email Address</h4>
+                            <p style={{marginLeft: '1rem'}}>{email}</p>
+                            <h4>Relationship to {forName}</h4>
+                            <p style={{marginLeft: '1rem'}}>{isCurrent ? 'Current' : 'Former'} {knowsHow}</p>
+                            <h4>Time you've known {forName}</h4>
+                            <p style={{marginLeft: '1rem'}}>{isCurrent ? timeKnown : `${knownFrom} - ${knownTo}`}</p>
+                        </Card>
                     </>
                 )}
             </div>
