@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import Card from "../components/Card";
 import Button from "../components/Button";
 import SmallCard from "../components/SmallCard";
+import { MdOutlineModeEditOutline } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import '../assets/css/reference.css';
 
@@ -27,9 +28,9 @@ const Reference = () => {
 
     const [q1, setQ1] = useState('Describe a time where this person had a disagreement with a coworker.');
     const [q1Answer, setQ1Answer] = useState('');
-    const [q2, setQ2] = useState('');
+    const [q2, setQ2] = useState('Describe a time where this person took initiative on the job.');
     const [q2Answer, setQ2Answer] = useState('');
-    const [q3, setQ3] = useState('');
+    const [q3, setQ3] = useState('Describe a time where this person handled a stressful situation.');
     const [q3Answer, setQ3Answer] = useState('');
 
     let navigate = useNavigate();
@@ -171,6 +172,9 @@ const Reference = () => {
                                 return;
                             }
                             setMessage('');
+                            console.log('timeKnown: ' + timeKnown);
+                            console.log('knownFrom: ' + knownFrom);
+                            console.log('knownTo: ' + knownTo);
                             setStep(knowsHow === 'supervisor' ? 4 : 5)
                             }}/>
                     </>
@@ -257,14 +261,45 @@ const Reference = () => {
                     <>
                         <Card title={'Review your Reference'} style={{width: '50%', height: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center'}}/>
                         <Card style={{width: '50%', height: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-                            <h4>Name</h4>
-                            <p style={{marginLeft: '1rem'}}>{firstName} {lastName}</p>
-                            <h4>Email Address</h4>
-                            <p style={{marginLeft: '1rem'}}>{email}</p>
-                            <h4>Relationship to {forName}</h4>
+                            <div className={'title-edit-card'}>
+                                <h4>Your Information</h4>
+                                <MdOutlineModeEditOutline className={'icon'} size={'1.5rem'} style={{marginLeft: '2rem'}}/>
+                            </div>
+                            <p style={{marginLeft: '1rem'}}>{firstName} {lastName}, {email}</p>
+                            <div className={'title-edit-card'}>
+                                <h4>Relationship to {forName}</h4>
+                                <MdOutlineModeEditOutline className={'icon'} size={'1.5rem'} style={{marginLeft: '2rem'}}/>
+                            </div>
                             <p style={{marginLeft: '1rem'}}>{isCurrent ? 'Current' : 'Former'} {knowsHow}</p>
-                            <h4>Time you've known {forName}</h4>
+                            <div className={'title-edit-card'}>
+                                <h4>Time you've known {forName}</h4>
+                                <MdOutlineModeEditOutline className={'icon'} size={'1.5rem'} style={{marginLeft: '2rem'}}/>
+                            </div>
                             <p style={{marginLeft: '1rem'}}>{isCurrent ? timeKnown : `${knownFrom} - ${knownTo}`}</p>
+                            {knowsHow === 'supervisor' && (
+                                <>
+                                    <div className={'title-edit-card'}>
+                                        <h4>You worked with {forName} at</h4>
+                                        <MdOutlineModeEditOutline className={'icon'} size={'1.5rem'} style={{marginLeft: '2rem'}}/>
+                                    </div>
+                                    <p style={{marginLeft: '1rem'}}>{companyName}, {companyCity} {companyState}</p>
+                                </>
+                            )}
+                            <div className={'title-edit-card'}>
+                                <h4>{q1}</h4>
+                                <MdOutlineModeEditOutline className={'icon'} size={'1.5rem'} style={{marginLeft: '2rem'}}/>
+                            </div>
+                            <p style={{marginLeft: '1rem'}}>{q1Answer}</p>
+                            <div className={'title-edit-card'}>
+                                <h4>{q2}</h4>
+                                <MdOutlineModeEditOutline className={'icon'} size={'1.5rem'} style={{marginLeft: '2rem'}}/>
+                            </div>
+                            <p style={{marginLeft: '1rem'}}>{q2Answer}</p>
+                            <div className={'title-edit-card'}>
+                                <h4>{q3}</h4>
+                                <MdOutlineModeEditOutline className={'icon'} size={'1.5rem'} style={{marginLeft: '2rem'}}/>
+                            </div>
+                            <p style={{marginLeft: '1rem'}}>{q3Answer}</p>
                         </Card>
                     </>
                 )}

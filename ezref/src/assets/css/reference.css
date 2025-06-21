@@ -36,3 +36,18 @@ input, select {
     font-size: 1.75rem;
     font-weight: bold;
   }
+
+  .icon:hover {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    transform: scale(1.25);
+  }
+
+  .title-edit-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 2rem;
+  }
