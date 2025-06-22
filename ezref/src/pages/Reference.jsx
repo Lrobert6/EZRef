@@ -3,6 +3,7 @@ import Card from "../components/Card";
 import Button from "../components/Button";
 import SmallCard from "../components/SmallCard";
 import { MdOutlineModeEditOutline } from "react-icons/md";
+import { IoIosCheckmarkCircleOutline } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import '../assets/css/reference.css';
 
@@ -46,8 +47,8 @@ const Reference = () => {
 
     return(
         <div style={{position: 'relative'}}>
-            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '5rem', padding: '3rem 5rem'}}>
-                {step !== 8 &&(
+            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '5rem', padding: '3rem 5rem', paddingBottom: '6rem'}}>
+                {step !== 8 && step !== 9 &&(
                     <Card style={{width: '50%'}}>
                         <p>Progress Bar Here</p>
                         <h2 style={{fontSize: '2rem', textAlign: 'center'}}>You're submitting a reference for {forName}</h2>
@@ -263,48 +264,59 @@ const Reference = () => {
                         <Card style={{width: '50%', height: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                             <div className={'title-edit-card'}>
                                 <h4>Your Information</h4>
-                                <MdOutlineModeEditOutline className={'icon'} size={'1.5rem'} style={{marginLeft: '2rem'}}/>
+                                <MdOutlineModeEditOutline className={'icon'} size={'1.5rem'} style={{marginLeft: '2rem'}} onClick={() => setStep(1)}/>
                             </div>
                             <p style={{marginLeft: '1rem'}}>{firstName} {lastName}, {email}</p>
                             <div className={'title-edit-card'}>
                                 <h4>Relationship to {forName}</h4>
-                                <MdOutlineModeEditOutline className={'icon'} size={'1.5rem'} style={{marginLeft: '2rem'}}/>
+                                <MdOutlineModeEditOutline className={'icon'} size={'1.5rem'} style={{marginLeft: '2rem'}} onClick={() => setStep(2)}/>
                             </div>
                             <p style={{marginLeft: '1rem'}}>{isCurrent ? 'Current' : 'Former'} {knowsHow}</p>
                             <div className={'title-edit-card'}>
                                 <h4>Time you've known {forName}</h4>
-                                <MdOutlineModeEditOutline className={'icon'} size={'1.5rem'} style={{marginLeft: '2rem'}}/>
+                                <MdOutlineModeEditOutline className={'icon'} size={'1.5rem'} style={{marginLeft: '2rem'}} onClick={() => setStep(3)}/>
                             </div>
                             <p style={{marginLeft: '1rem'}}>{isCurrent ? timeKnown : `${knownFrom} - ${knownTo}`}</p>
                             {knowsHow === 'supervisor' && (
                                 <>
                                     <div className={'title-edit-card'}>
                                         <h4>You worked with {forName} at</h4>
-                                        <MdOutlineModeEditOutline className={'icon'} size={'1.5rem'} style={{marginLeft: '2rem'}}/>
+                                        <MdOutlineModeEditOutline className={'icon'} size={'1.5rem'} style={{marginLeft: '2rem'}} onClick={() => setStep(4)}/>
                                     </div>
                                     <p style={{marginLeft: '1rem'}}>{companyName}, {companyCity} {companyState}</p>
                                 </>
                             )}
                             <div className={'title-edit-card'}>
                                 <h4>{q1}</h4>
-                                <MdOutlineModeEditOutline className={'icon'} size={'1.5rem'} style={{marginLeft: '2rem'}}/>
+                                <MdOutlineModeEditOutline className={'icon'} size={'1.5rem'} style={{marginLeft: '2rem'}} onClick={() => setStep(5)}/>
                             </div>
                             <p style={{marginLeft: '1rem'}}>{q1Answer}</p>
                             <div className={'title-edit-card'}>
                                 <h4>{q2}</h4>
-                                <MdOutlineModeEditOutline className={'icon'} size={'1.5rem'} style={{marginLeft: '2rem'}}/>
+                                <MdOutlineModeEditOutline className={'icon'} size={'1.5rem'} style={{marginLeft: '2rem'}} onClick={() => setStep(6)}/>
                             </div>
                             <p style={{marginLeft: '1rem'}}>{q2Answer}</p>
                             <div className={'title-edit-card'}>
                                 <h4>{q3}</h4>
-                                <MdOutlineModeEditOutline className={'icon'} size={'1.5rem'} style={{marginLeft: '2rem'}}/>
+                                <MdOutlineModeEditOutline className={'icon'} size={'1.5rem'} style={{marginLeft: '2rem'}} onClick={() => setStep(7)}/>
                             </div>
-                            <p style={{marginLeft: '1rem'}}>{q3Answer}</p>
+                            <p style={{marginLeft: '1rem', marginBottom: '3rem'}}>{q3Answer}</p>
                         </Card>
+                        <Button text='Continue' onClick={() => setStep(9)}/>
+                    </>
+                )}
+                {step === 9 && (
+                    <>
+                        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: 'calc(100vh - 10rem)', width: '100%'}}>
+                            <Card title={`Thanks for your reference, ${firstName}.`} style={{width: '50%', height: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                                <IoIosCheckmarkCircleOutline color={'#3B413C'} size={'60%'} style={{marginLeft: '20%'}}/>
+                                <p style={{fontSize: '1.5rem'}}>Your reference will help perspective employers decide if <span>{forName}</span> is the right match.</p>
+                            </Card>
+                        </div>
                     </>
                 )}
             </div>
-            <p style={{position: 'fixed', bottom: 0, width: '100%', textAlign: 'center', padding: '1rem'}}>Powered by <span onClick={() => navigate('/')}>EZRef</span></p>
+            <p style={{position: 'fixed', bottom: 0, width: '100%', textAlign: 'center', padding: '1rem', backgroundColor: 'white', zIndex: 10}}>Powered by <span onClick={() => navigate('/')}>EZRef</span></p>
         </div>
     )
 }
