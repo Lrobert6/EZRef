@@ -11,6 +11,7 @@ const Reference = () => {
     const [loading, setLoading] = useState(false);
     const [forName, setForName] = useState("Name");
     const [step, setStep] = useState(1);
+    const [isEditing, setIsEditing] = useState(false);
     const [message, setMessage] = useState('');
     
     const [firstName, setFirstName] = useState('');
@@ -66,6 +67,10 @@ const Reference = () => {
                             )}
                         </Card>
                         <Button text='Continue' onClick={() => {
+                            if(isEditing){
+                                setStep(8);
+                                return;
+                            }
                             if(!firstName.trim() || !lastName.trim()){
                                 setMessage("Please enter your first and last name");
                                 return;
@@ -90,42 +95,42 @@ const Reference = () => {
                         <Card title={`How do you know ${forName}?`} style={{width: '50%', height: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                             <div style={{display: 'flex', flexDirection: 'row'}}>
                                 <div>
-                                    <SmallCard onClick={() => {setKnowsHow('supervisor');setIsCurrent(false);setStep(3)}}>
+                                    <SmallCard onClick={() => {setKnowsHow('supervisor');setIsCurrent(false);setStep(isEditing? 3 : 8)}}>
                                         <p>I am their former supervisor.</p>
                                     </SmallCard>
-                                    <SmallCard onClick={() => {setKnowsHow('supervisor');setIsCurrent(true);setStep(3)}}>
+                                    <SmallCard onClick={() => {setKnowsHow('supervisor');setIsCurrent(true);setStep(isEditing? 3 : 8)}}>
                                         <p>I am their current supervisor.</p>
                                     </SmallCard>
-                                    <SmallCard onClick={() => {setKnowsHow('community leader');setIsCurrent(false);setStep(3)}}>
+                                    <SmallCard onClick={() => {setKnowsHow('community leader');setIsCurrent(false);setStep(isEditing? 3 : 8)}}>
                                         <p>I am their former community leader.</p>
                                     </SmallCard>
-                                    <SmallCard onClick={() => {setKnowsHow('community leader');setIsCurrent(true);setStep(3)}}>
+                                    <SmallCard onClick={() => {setKnowsHow('community leader');setIsCurrent(true);setStep(isEditing? 3 : 8)}}>
                                         <p>I am their current community leader.</p>
                                     </SmallCard>
-                                    <SmallCard onClick={() => {setKnowsHow('religious leader');setIsCurrent(false);setStep(3)}}>
+                                    <SmallCard onClick={() => {setKnowsHow('religious leader');setIsCurrent(false);setStep(isEditing? 3 : 8)}}>
                                         <p>I am their former religious leader.</p>
                                     </SmallCard>
-                                    <SmallCard onClick={() => {setKnowsHow('religious leader');setIsCurrent(true);setStep(3)}}>
+                                    <SmallCard onClick={() => {setKnowsHow('religious leader');setIsCurrent(true);setStep(isEditing? 3 : 8)}}>
                                         <p>I am their current religious leader.</p>
                                     </SmallCard>
                                 </div>
                                 <div>
-                                    <SmallCard onClick={() => {setKnowsHow('teacher');setIsCurrent(false);setStep(3)}}>
+                                    <SmallCard onClick={() => {setKnowsHow('teacher');setIsCurrent(false);setStep(isEditing? 3 : 8)}}>
                                         <p>I am their former teacher.</p>
                                     </SmallCard>
-                                    <SmallCard onClick={() => {setKnowsHow('teacher');setIsCurrent(true);setStep(3)}}>
+                                    <SmallCard onClick={() => {setKnowsHow('teacher');setIsCurrent(true);setStep(isEditing? 3 : 8)}}>
                                         <p>I am their current teacher.</p>
                                     </SmallCard>
-                                    <SmallCard onClick={() => {setKnowsHow('mentor');setIsCurrent(false);setStep(3)}}>
+                                    <SmallCard onClick={() => {setKnowsHow('mentor');setIsCurrent(false);setStep(isEditing? 3 : 8)}}>
                                         <p>I am their former mentor.</p>
                                     </SmallCard>
-                                    <SmallCard onClick={() => {setKnowsHow('mentor');setIsCurrent(true);setStep(3)}}>
+                                    <SmallCard onClick={() => {setKnowsHow('mentor');setIsCurrent(true);setStep(isEditing? 3 : 8)}}>
                                         <p>I am their current mentor.</p>
                                     </SmallCard>
-                                    <SmallCard onClick={() => {setKnowsHow('advisor');setIsCurrent(false);setStep(3)}}>
+                                    <SmallCard onClick={() => {setKnowsHow('advisor');setIsCurrent(false);setStep(isEditing? 3 : 8)}}>
                                         <p>I am their former advisor.</p>
                                     </SmallCard>
-                                    <SmallCard onClick={() => {setKnowsHow('advisor');setIsCurrent(true);setStep(3)}}>
+                                    <SmallCard onClick={() => {setKnowsHow('advisor');setIsCurrent(true);setStep(isEditing? 3 : 8)}}>
                                         <p>I am their current advisor.</p>
                                     </SmallCard>
                                 </div>
@@ -164,6 +169,10 @@ const Reference = () => {
                         )}
                         
                         <Button text='Continue' onClick={() => {
+                            if(isEditing){
+                                setStep(8);
+                                return;
+                            }
                             if(!isCurrent && !timeKnown){
                                 setMessage('Please select an option');
                                 return;
@@ -195,6 +204,10 @@ const Reference = () => {
                         )}
                         
                         <Button text='Continue' onClick={() => {
+                            if(isEditing){
+                                setStep(8);
+                                return;
+                            }
                             if(!companyName.trim() || !companyCity.trim() || !companyState.trim() || !companyPhone.trim()){
                                 setMessage('Company details are required');
                                 return;
@@ -213,6 +226,10 @@ const Reference = () => {
                             )}
                         </Card>
                         <Button text='Continue' onClick={() => {
+                            if(isEditing){
+                                setStep(8);
+                                return;
+                            }
                             if(!q1Answer.trim()){
                                 setMessage('Answer this question to continue');
                                 return;
@@ -231,6 +248,10 @@ const Reference = () => {
                                 )}
                         </Card>
                         <Button text='Continue' onClick={() => {
+                            if(isEditing){
+                                setStep(8);
+                                return;
+                            }
                             if(!q2Answer.trim()){
                                 setMessage('Answer this question to continue');
                                 return;
@@ -249,6 +270,10 @@ const Reference = () => {
                             )}
                         </Card>
                         <Button text='Continue' onClick={() => {
+                            if(isEditing){
+                                setStep(8);
+                                return;
+                            }
                             if(!q3Answer.trim()){
                                 setMessage('Answer this question to continue');
                                 return;
