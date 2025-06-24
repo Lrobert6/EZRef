@@ -37,6 +37,9 @@ const Reference = () => {
 
     let navigate = useNavigate();
 
+    const countWords = (text) => {
+        return text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
+    };
 
     if(loading){
         return(
@@ -95,42 +98,42 @@ const Reference = () => {
                         <Card title={`How do you know ${forName}?`} style={{width: '50%', height: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                             <div style={{display: 'flex', flexDirection: 'row'}}>
                                 <div>
-                                    <SmallCard onClick={() => {setKnowsHow('supervisor');setIsCurrent(false);setStep(isEditing? 3 : 8)}}>
+                                    <SmallCard onClick={() => {setKnowsHow('supervisor');setIsCurrent(false);setStep(!isEditing? 3 : 8)}}>
                                         <p>I am their former supervisor.</p>
                                     </SmallCard>
-                                    <SmallCard onClick={() => {setKnowsHow('supervisor');setIsCurrent(true);setStep(isEditing? 3 : 8)}}>
+                                    <SmallCard onClick={() => {setKnowsHow('supervisor');setIsCurrent(true);setStep(!isEditing? 3 : 8)}}>
                                         <p>I am their current supervisor.</p>
                                     </SmallCard>
-                                    <SmallCard onClick={() => {setKnowsHow('community leader');setIsCurrent(false);setStep(isEditing? 3 : 8)}}>
+                                    <SmallCard onClick={() => {setKnowsHow('community leader');setIsCurrent(false);setStep(!isEditing? 3 : 8)}}>
                                         <p>I am their former community leader.</p>
                                     </SmallCard>
-                                    <SmallCard onClick={() => {setKnowsHow('community leader');setIsCurrent(true);setStep(isEditing? 3 : 8)}}>
+                                    <SmallCard onClick={() => {setKnowsHow('community leader');setIsCurrent(true);setStep(!isEditing? 3 : 8)}}>
                                         <p>I am their current community leader.</p>
                                     </SmallCard>
-                                    <SmallCard onClick={() => {setKnowsHow('religious leader');setIsCurrent(false);setStep(isEditing? 3 : 8)}}>
+                                    <SmallCard onClick={() => {setKnowsHow('religious leader');setIsCurrent(false);setStep(!isEditing? 3 : 8)}}>
                                         <p>I am their former religious leader.</p>
                                     </SmallCard>
-                                    <SmallCard onClick={() => {setKnowsHow('religious leader');setIsCurrent(true);setStep(isEditing? 3 : 8)}}>
+                                    <SmallCard onClick={() => {setKnowsHow('religious leader');setIsCurrent(true);setStep(!isEditing? 3 : 8)}}>
                                         <p>I am their current religious leader.</p>
                                     </SmallCard>
                                 </div>
                                 <div>
-                                    <SmallCard onClick={() => {setKnowsHow('teacher');setIsCurrent(false);setStep(isEditing? 3 : 8)}}>
+                                    <SmallCard onClick={() => {setKnowsHow('teacher');setIsCurrent(false);setStep(!isEditing? 3 : 8)}}>
                                         <p>I am their former teacher.</p>
                                     </SmallCard>
-                                    <SmallCard onClick={() => {setKnowsHow('teacher');setIsCurrent(true);setStep(isEditing? 3 : 8)}}>
+                                    <SmallCard onClick={() => {setKnowsHow('teacher');setIsCurrent(true);setStep(!isEditing? 3 : 8)}}>
                                         <p>I am their current teacher.</p>
                                     </SmallCard>
-                                    <SmallCard onClick={() => {setKnowsHow('mentor');setIsCurrent(false);setStep(isEditing? 3 : 8)}}>
+                                    <SmallCard onClick={() => {setKnowsHow('mentor');setIsCurrent(false);setStep(!isEditing? 3 : 8)}}>
                                         <p>I am their former mentor.</p>
                                     </SmallCard>
-                                    <SmallCard onClick={() => {setKnowsHow('mentor');setIsCurrent(true);setStep(isEditing? 3 : 8)}}>
+                                    <SmallCard onClick={() => {setKnowsHow('mentor');setIsCurrent(true);setStep(!isEditing? 3 : 8)}}>
                                         <p>I am their current mentor.</p>
                                     </SmallCard>
-                                    <SmallCard onClick={() => {setKnowsHow('advisor');setIsCurrent(false);setStep(isEditing? 3 : 8)}}>
+                                    <SmallCard onClick={() => {setKnowsHow('advisor');setIsCurrent(false);setStep(!isEditing? 3 : 8)}}>
                                         <p>I am their former advisor.</p>
                                     </SmallCard>
-                                    <SmallCard onClick={() => {setKnowsHow('advisor');setIsCurrent(true);setStep(isEditing? 3 : 8)}}>
+                                    <SmallCard onClick={() => {setKnowsHow('advisor');setIsCurrent(true);setStep(!isEditing? 3 : 8)}}>
                                         <p>I am their current advisor.</p>
                                     </SmallCard>
                                 </div>
@@ -145,7 +148,6 @@ const Reference = () => {
                         {isCurrent===false ? (
                             <Card title={`How long have you been ${knowsHow==='advisor' ? 'an' : 'a'} ${knowsHow} for ${forName}?`} style={{width: '50%', height: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                                 <select placeholder='Select an option' onChange={(e) => setTimeKnown(e.target.value)} style={{margin: '1rem 0'}}>
-                                    <option disabled hidden>Select an option</option>
                                     <option>0-6 months</option>
                                     <option>6-12 months</option>
                                     <option>1-3 years</option>
@@ -221,6 +223,7 @@ const Reference = () => {
                     <>
                         <Card title={q1} style={{width: '50%', height: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                             <textarea value={q1Answer} onChange={(e) => setQ1Answer(e.target.value)} required placeholder="Please answer here" style={{width: '30rem', height: '15rem', resize: 'none', padding: '1rem', margin: '2rem 0'}}/>
+                            <p style={{alignSelf: 'flex-end', marginRight: '2rem'}}>{countWords(q1Answer)} words</p>
                             {message && (
                                 <p>{message}</p>
                             )}
@@ -243,6 +246,7 @@ const Reference = () => {
                     <>
                         <Card title={q2} style={{width: '50%', height: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                             <textarea value={q2Answer} onChange={(e) => setQ2Answer(e.target.value)} required placeholder="Please answer here" style={{width: '30rem', height: '15rem', resize: 'none', padding: '1rem', margin: '2rem 0'}}/>
+                            <p style={{alignSelf: 'flex-end', marginRight: '2rem'}}>{countWords(q2Answer)} words</p>
                             {message && (
                                     <p>{message}</p>
                                 )}
@@ -265,6 +269,7 @@ const Reference = () => {
                     <>
                         <Card title={q3} style={{width: '50%', height: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                             <textarea value={q3Answer} onChange={(e) => setQ3Answer(e.target.value)} required placeholder="Please answer here" style={{width: '30rem', height: '15rem', resize: 'none', padding: '1rem', margin: '2rem 0'}}/>
+                            <p style={{alignSelf: 'flex-end', marginRight: '2rem'}}>{countWords(q3Answer)} words</p>
                             {message && (
                                 <p>{message}</p>
                             )}
@@ -341,7 +346,7 @@ const Reference = () => {
                     </>
                 )}
             </div>
-            <p style={{position: 'fixed', bottom: 0, width: '100%', textAlign: 'center', padding: '1rem', backgroundColor: 'white', zIndex: 10}}>Powered by <span onClick={() => navigate('/')}>EZRef</span></p>
+            <p style={{position: 'fixed', bottom: 0, width: '70%', marginLeft: '15%', textAlign: 'center', padding: '1rem', borderRadius: '10px', backgroundColor: '#DAF0EE', zIndex: 10}}>Powered by <span onClick={() => navigate('/')}>EZRef</span></p>
         </div>
     )
 }
